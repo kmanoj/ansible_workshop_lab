@@ -20,7 +20,7 @@
   - name: Mount NFS Volume
     mount:
         path: /mnt/{{ volume_name }}
-        src: 192.168.0.51:/nfs_vol_01
+        src: 192.168.0.51:/{{ volume_name }}
         fstype: nfs
         opts: rw
         state: mounted
