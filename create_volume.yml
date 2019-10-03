@@ -2,29 +2,28 @@
 - hosts: localhost
   name: Setup ONTAP
   gather_facts: false
-  vars:
-    netapp_hostname: cluster1
-    netapp_username: admin
+  vars_files:
+   vars.yml
   vars_prompt:
   - name: "netapp_password"
     prompt: "Password:"
-  - name: "volname"
+  - name: "volname1"
     prompt: "Enter the volume name:"
     private: no
   - name: "new_size"
     prompt: "Enter the size in gb:"
     private: no
   vars:
-    volname: "{{ volname }}"
+    volname: "{{ volname1 }}"
     vserver: "{{ vserver }}"
     aggrname: " {{ aggrname1 }}"
-    policy: "{{ volname }}_policy"
+    policy: "{{ volname1 }}_policy"
     state: "{{ state }}"
   tasks:
   - name: Create Volume
     na_ontap_volume:
       state: "{{ state }}"
-      name: "{{ volname }}"
+      name: "{{ volname1 }}"
       aggregate_name: "{{ aggrname2 }}"
       size: "{{ new_size }}"
       size_unit: gb
