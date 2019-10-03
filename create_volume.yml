@@ -2,6 +2,9 @@
 - hosts: localhost
   name: Setup ONTAP
   gather_facts: false
+  vars:
+    netapp_hostname: cluster1
+    netapp_username: admin
   vars_prompt:
   - name: "netapp_password"
     prompt: "Password:"
