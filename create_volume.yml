@@ -7,24 +7,26 @@
   vars_prompt:
   - name: "netapp_password"
     prompt: "Password:"
-  - name: "volname1"
+  - name: "vol_name"
     prompt: "Enter the volume name:"
+    private: no
+  - name: "aggr_name"
+    prompt: "Enter the aggr name:"
     private: no
   - name: "vol_size"
     prompt: "Enter the size in gb:"
     private: no
   vars:
-    volname: "{{ volname1 }}"
+    volname: "{{ vol_name }}"
     vserver: "{{ vserver }}"
-    aggrname: " {{ aggrname1 }}"
-    policy: "{{ volname1 }}_policy"
+    policy: "{{ vol_name }}_policy"
     state: "{{ state }}"
   tasks:
   - name: Create Volume
     na_ontap_volume:
       state: "{{ state }}"
-      name: "{{ volname1 }}"
-      aggregate_name: "{{ aggrname2 }}"
+      name: "{{ vol_name }}"
+      aggregate_name: "{{ aggr_name }}"
       size: "{{ vol_size }}"
       size_unit: gb
       vserver: "{{ vserver }}"
