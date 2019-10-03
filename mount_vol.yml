@@ -11,14 +11,14 @@
   tasks:
   - name: Create mountpoint
     file:
-        path: /mnt/{{ volume_name }}
+        path: "/mnt/{{ volume_name }}"
         state: directory
         mode: 777
         owner: root
         group: root
   - name: Mount NFS Volume
     mount:
-        path: /mnt/{{ volume_name }}
+        path: "/mnt/{{ volume_name }}"
         src: 192.168.0.51:/nfs_vol_01
         fstype: nfs
         opts: rw
