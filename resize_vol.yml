@@ -13,9 +13,6 @@
   - name: "vol_name"
     prompt: "Enter the volume name:"
     private: no
-  - name: "aggr_name"
-    prompt: "Enter the aggr name:"
-    private: no
   - name: "vol_size"
     prompt: "Enter the new size:"
     private: no
@@ -27,7 +24,6 @@
     na_ontap_volume:
       state: "{{ state }}"
       name: "{{ vol_name }}"
-      aggregate_name: "{{ aggr_name }}"
       size: "{{ vol_size }}"
       size_unit: gb
       vserver: "{{ vserver }}"
