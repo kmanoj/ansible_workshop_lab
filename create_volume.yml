@@ -10,7 +10,7 @@
   - name: "volname1"
     prompt: "Enter the volume name:"
     private: no
-  - name: "new_size"
+  - name: "vol_size"
     prompt: "Enter the size in gb:"
     private: no
   vars:
@@ -25,7 +25,7 @@
       state: "{{ state }}"
       name: "{{ volname1 }}"
       aggregate_name: "{{ aggrname2 }}"
-      size: "{{ new_size }}"
+      size: "{{ vol_size }}"
       size_unit: gb
       vserver: "{{ vserver }}"
       hostname: "{{ netapp_hostname }}"
