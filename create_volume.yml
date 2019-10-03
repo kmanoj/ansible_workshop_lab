@@ -29,6 +29,7 @@
       aggregate_name: "{{ aggr_name }}"
       size: "{{ vol_size }}"
       size_unit: gb
+      junction_path: /{{ vol_name }}
       vserver: "{{ vserver }}"
       hostname: "{{ netapp_hostname }}"
       username: "{{ netapp_username }}"
