@@ -1,0 +1,22 @@
+---
+- hosts: rhel2
+  name: Mount volume
+  vars:
+    rhel_username: root
+    rhel_password: Netapp1!
+  hosts: rhel2
+  tasks:
+  - name: Create mountpoint
+    file:
+        path: /mnt/nfs1
+        state: directory
+        mode: 777
+        owner: root
+        group: root
+  - name: Mount NFS Volume
+    mount:
+        path: /mnt/nfs1
+        src: 192.168.0.51:/nfs_vol_01
+        fstype: nfs
+        opts: rw
+        state: mounted
