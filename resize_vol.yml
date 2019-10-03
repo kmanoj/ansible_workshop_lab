@@ -10,14 +10,17 @@
   - name: "vserver"
     prompt: "Enter the vserver name:"
     private: no
-  - name: "volname"
+  - name: "vol_name"
     prompt: "Enter the volume name:"
     private: no
-  - name: "new_size"
+  - name: "aggr_name"
+    prompt: "Enter the aggr name:"
+    private: no
+  - name: "vol_size"
     prompt: "Enter the new size:"
     private: no
   vars:
-    volname: "{{ volname }}"
+    vol_name: "{{ vol_name }}"
     vserver: "{{ vserver }}"
     aggrname: " {{ aggrname1 }}"
     policy: "{{ volname }}_policy"
@@ -26,9 +29,9 @@
   - name: Change volume size
     na_ontap_volume:
       state: "{{ state }}"
-      name: "{{ volname }}"
-      aggregate_name: "{{ aggrname1 }}"
-      size: "{{ new_size }}"
+      name: "{{ vol_name }}"
+      aggregate_name: "{{ aggr_name }}"
+      size: "{{ vol_size }}"
       size_unit: gb
       vserver: "{{ vserver }}"
       hostname: "{{ netapp_hostname }}"
