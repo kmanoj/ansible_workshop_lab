@@ -8,9 +8,9 @@
   - name: Create NFS LIF
     na_ontap_interface:
       state: present
-      interface_name: "{{ vserver }}_nfs_data_1"
+      interface_name: "{{ vserver }}_nfs_data_2"
       home_port: e0c
-      home_node: "{{ node_name_01 }}"
+      home_node: "{{ node_name_02 }}"
       role: data
       protocols: nfs
       admin_status: up
