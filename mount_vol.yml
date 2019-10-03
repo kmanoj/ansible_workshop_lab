@@ -4,18 +4,21 @@
   vars:
     rhel_username: root
     rhel_password: Netapp1!
+  vars_prompt:
+  - name: "volume_name"
+    prompt: "Volume name:"
   hosts: rhel2
   tasks:
   - name: Create mountpoint
     file:
-        path: /mnt/nfs1
+        path: /mnt/"{{ volume_name }}"
         state: directory
         mode: 777
         owner: root
         group: root
   - name: Mount NFS Volume
     mount:
-        path: /mnt/nfs1
+        path: /mnt/"{{ volume_name }}"
         src: 192.168.0.51:/nfs_vol_01
         fstype: nfs
         opts: rw
