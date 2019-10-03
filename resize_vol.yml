@@ -20,10 +20,7 @@
     prompt: "Enter the new size:"
     private: no
   vars:
-    vol_name: "{{ vol_name }}"
-    vserver: "{{ vserver }}"
-    aggrname: " {{ aggrname1 }}"
-    policy: "{{ volname }}_policy"
+    policy: "{{ vol_name }}_policy"
     state: "{{ state }}"
   tasks:
   - name: Change volume size
