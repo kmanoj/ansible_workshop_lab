@@ -12,7 +12,7 @@ address_nfs3: 192.168.0.53
 address_iscsi: 192.168.0.54
 address_cifs: 192.168.0.55
 address_cifs2: 192.168.0.56
-aggrname1: aggr1_data_01
+aggrname: aggr1_data_01
 aggrname2: aggr1_data_02
 state: present
 volname: test_vol_01
