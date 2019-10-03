@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+   vars.yml
+  name: Create CIFS interface
+  tasks:
+  - name: Create interface CIFS
+    na_ontap_interface:
+      state: present
+      interface_name: "{{ vserver }}_cifs_data_2"
+      home_port: e0c
+      home_node: "{{ node_name_02 }}"
+      role: data
+      protocols: cifs
+      admin_status: up
+      failover_policy: local-only
+      firewall_policy: data
+      is_auto_revert: true
+      address: "{{ address_cifs2 }}"
+      netmask: 255.255.255.0
+      vserver: "{{ vserver }}"
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"

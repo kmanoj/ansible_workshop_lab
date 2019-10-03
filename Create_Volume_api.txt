@@ -1,0 +1,8 @@
+{
+"aggregates": [
+{"name": "aggr1_data_01" }],
+"name": "test_vol111",
+"nas": { "path": "/test_vol111"},
+"size": 1000,
+"svm": {"name": "ansible_svm_01" }
+}

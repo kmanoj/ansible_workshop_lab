@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  name: Setup ONTAP
+  gather_facts: false
+  vars_files:
+   vars.yml
+  vars_prompt:
+  - name: "netapp_password"
+    prompt: "Password:"
+  - name: "vserver"
+    prompt: "Enter the vserver name:"
+    private: no
+  - name: "volname"
+    prompt: "Enter the volume name:"
+    private: no
+  - name: "new_size"
+    prompt: "Enter the new size:"
+    private: no
+  vars:
+    volname: "{{ volname }}"
+    vserver: "{{ vserver }}"
+    aggrname: " {{ aggrname1 }}"
+    policy: "{{ volname }}_policy"
+    state: "{{ state }}"
+  tasks:
+  - name: Change volume size
+    na_ontap_volume:
+      state: "{{ state }}"
+      name: "{{ volname }}"
+      aggregate_name: "{{ aggrname1 }}"
+      size: "{{ new_size }}"
+      size_unit: gb
+      vserver: "{{ vserver }}"
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
